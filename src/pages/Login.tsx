@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import Layout from '../parts/Layout'
 
-const Profile: FunctionComponent = () => (
+const Login: FunctionComponent = () => (
     <Layout>
-        Profile Page.
+        Login Page.
     </Layout>
 )
 
-export default Profile;
+export default Login;
