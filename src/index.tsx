@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import {
     BrowserRouter as Router,
-    Switch, Route
+    Switch, Route, RouteComponentProps
     } from 'react-router-dom'
 
 import 'semantic-ui-css/semantic.min.css'
@@ -16,12 +16,14 @@ import { createBrowserHistory } from 'history'
 
 import config from "./auth_config.json"
 
+const history: any = createBrowserHistory();
+
 const onRedirectCallback = (redirectResult?: RedirectLoginResult) => {
     const targetUrl = redirectResult && redirectResult.appState && redirectResult.appState.targetUrl 
         ? redirectResult.appState.targetUrl
         : window.location.pathname
 
-    createBrowserHistory().push(targetUrl);
+    history.push(targetUrl);
 }
 
 
@@ -29,7 +31,7 @@ ReactDOM.render(
     <Auth0Provider
         domain={config.domain}
         client_id={config.clientId}
-        redirect_uri={window.location.origin}
+        redirect_uri={window.location.href}
         onRedirectCallback={onRedirectCallback}
         connection="windowslive">
         <Router>
